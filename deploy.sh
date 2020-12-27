@@ -3,23 +3,25 @@
 # abort on errors
 set -e
 
-# build
+# commit changes to master
+git add -A
+git commit -m 'Changes'
+git push
+
+# build website
 npm run build
 
-# navigate into the build output directory
+# move into the build output directory
 cd dist
 
-# if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
-
+# commit changes of dist
 git init
 git add -A
-git commit -m 'deploy'
+git commit -m 'Deploy Website'
 
-# if you are deploying to https://<USERNAME>.github.io
-git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
+# Push the website to gh-pages
+git push -f git@github.com:arunmistry/arunmistry.github.io.git master:gh-pages
 
-# if you are deploying to https://<USERNAME>.github.io/<REPO>
-# git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
-
+# remove dist folder
 cd -
+rm -rf dist

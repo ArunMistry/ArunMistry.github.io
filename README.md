@@ -1,24 +1,9 @@
-# website
+# Welcome to my Website
 
-## Project setup
+## Project setup to run on your machine
 ```
 yarn install
-```
-
-### Compiles and hot-reloads for development
-```
 yarn serve
 ```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Purpose
+ This website serves as my personal website and my resume. Feel free to take a look around. Feel free to contact me through any of the links in the footer of my website.

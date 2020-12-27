@@ -1,9 +1,9 @@
 <template>
-  <v-app>
+  <v-app >
     <v-navigation-drawer
       app
-      :mini-variant="hidesidemenu"
       mini-variant-width="90"
+      :mini-variant="hidesidemenu"
       @mouseover.native="scrlpoint ? (hidesidemenu = false) : ''"
       @mouseleave.native="scrlpoint ? (hidesidemenu = true) : ''"
     >
@@ -22,20 +22,15 @@
       <v-list nav v-for="item in menu" :key="item.icon">
         <v-list-item link>
           <v-list-item-icon>
-            <v-icon>mdi-{{item.icon}}</v-icon>
+            <v-icon :class="hidesidemenu?'':'ml-3'">mdi-{{item.icon}}</v-icon>
           </v-list-item-icon>
           <v-list-item-title>{{item.name}}</v-list-item-title>
         </v-list-item>
-
       </v-list>
     </v-navigation-drawer>
     <v-main>
       <router-view />
     </v-main>
-    <v-footer
-      app
-      absolute
-    >Thank you for checking out my website. Feel free to contact me through any of the following mediums!</v-footer>
   </v-app>
 </template>
 
@@ -54,7 +49,7 @@ export default {
         { icon: "account", name: "About Me" },
         { icon: "school", name: "Experience" },
         { icon: "briefcase", name: "Projects" },
-        { icon: "phone", name: "Contact Me" }
+        { icon: "phone", name: "Contact Me" },
       ],
     };
   },
@@ -80,3 +75,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+theme--light.v-navigation-drawer:not(.v-navigation-drawer--floating)
+  .v-navigation-drawer__border {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+</style>
