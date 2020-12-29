@@ -38,9 +38,8 @@
             <h2>Skillset</h2>
             <ul>
               <li>Front-End Developer</li>
-              <li>Fluent in Vue.JS, HTML, CSS</li>
+              <li>Fluent in Vue.JS, HTML, CSS and C</li>
               <li>Experienced with Vuetify Framework</li>
-              <li>Proficient in C</li>
               <li>Familiar with Python, JavaScript</li>
             </ul>
             <br />
@@ -94,7 +93,9 @@
                 <v-card shaped outlined class="elevation-5 mx-5 mb-5 mt-md-5">
                   <v-card-title class="text-h5 font-weight-bold">Co-op</v-card-title>
                   <v-divider />
-                  <v-card-text :style="$vuetify.breakpoint.lgAndUp?'overflow-y:scroll;height:40vh':''">
+                  <v-card-text
+                    :style="$vuetify.breakpoint.lgAndUp?'overflow-y:scroll;height:40vh':''"
+                  >
                     <v-timeline dense align-top>
                       <v-timeline-item>
                         <template v-slot:icon>
@@ -124,7 +125,7 @@
                   <v-card-title class="text-h5 font-weight-medium">{{item.title}}</v-card-title>
                   <v-divider />
                   <v-card-text style="max-height:50vh;overflow-y:scroll">
-                    <v-timeline :dense="$vuetify.breakpoint.smAndDown">
+                    <v-timeline :dense="$vuetify.breakpoint.mdAndDown">
                       <v-timeline-item v-for="event in item.events" :key="event.title">
                         <span slot="opposite">{{event.date}}</span>
                         <v-card elevation="10">
@@ -132,7 +133,7 @@
                             class
                             style="word-break:normal;line-height: 1.3;"
                           >{{event.name}}</v-card-title>
-                          <v-card-subtitle class="hidden-md-and-up white--text">{{event.date}}</v-card-subtitle>
+                          <v-card-subtitle class="hidden-lg-and-up">{{event.date}}</v-card-subtitle>
                           <v-divider />
                           <v-card-text class="pt-3 text-justify">{{event.brief}}</v-card-text>
                         </v-card>
@@ -145,42 +146,10 @@
           </v-card>
         </v-card>
       </v-col>
-      <v-col cols="12" md="5" order-md="1" id="Projects">
-        <v-card
-          tile
-          outlined
-          height="100%"
-          class="pa-5 px-md-10 d-flex align-center justify-md-end"
-        >
-          <span class="text-h3 text-md-h1 font-weight-medium mx-lg-5">Projects</span>
-        </v-card>
-      </v-col>
-      <v-col cols="12" md="7">
-        <v-card tile flat height="100%">
-          <v-tabs grow :height="$vuetify.breakpoint.mdAndUp?'60':''">
-            <v-tab style="border:thin solid #e0e0e0">Professional</v-tab>
-            <v-tab style="border:thin solid #e0e0e0">Personal</v-tab>
-            <!-- Use v-window or v-carousel -->
-            <v-tab-item v-for="i in projects" :key="i.ii">
-              <v-carousel>
-                <v-carousel-item
-                  v-for="(color, i) in ['green','secondary', 'yellow darken-2', 'red', 'orange']"
-                  :key="color"
-                >
-                  <v-sheet :color="color" height="105%">
-                    <v-row class="fill-height" align="center" justify="center">
-                      <div class="display-3">Slide {{ i + 1 }}</div>
-                    </v-row>
-                  </v-sheet>
-                </v-carousel-item>
-              </v-carousel>
-            </v-tab-item>
-          </v-tabs>
-        </v-card>
-      </v-col>
     </v-row>
+    <Projects />
     <v-card tile outlined width="100%">
-      <v-sheet class="arrows" style="transform: rotate(180deg);"/>
+      <v-sheet class="arrows" style="transform: rotate(180deg);" />
     </v-card>
     <v-footer dark padless style="border-left: thin solid rgba(100,150,255,.85)" id="Contact">
       <v-card tile color="#1565C0" class="text-center" width="100%">
@@ -210,8 +179,9 @@
 </template>
 
 <script>
+import Projects from "./Projects";
 export default {
-  components: {},
+  components: { Projects },
   data() {
     return {
       experience: [
@@ -273,7 +243,6 @@ export default {
           ],
         },
       ],
-      projects: [{ ii: 55 }, { ii: 66 }],
       footer: [
         { icon: "linkedin", link: "https://www.linkedin.com/in/arun-mistry/" },
         { icon: "instagram", link: "https://www.instagram.com/arunmistry79/" },
