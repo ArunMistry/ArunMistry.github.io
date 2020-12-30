@@ -7,14 +7,14 @@
           tile
           outlined
           height="100%"
-          min-height="90vh"
-          class="text-center d-flex flex-column"
+          max-height="100vh"
+          class="text-center d-flex flex-column profile"
         >
-          <v-sheet class="text-h2 font-weight-bold pt-10 pb-3">Arun Mistry</v-sheet>
-          <v-sheet class="text-h6 font-weight-medium mb-5">Welcome to my website</v-sheet>
-          <v-sheet width="100%" class="d-flex flex-grow-1 align-end justify-center">
-            <v-img :src="require(`../assets/TotallyMe.jpg`)" max-height="70vh" contain />
-          </v-sheet>
+          <span class="text-h1 font-weight-bold pt-10 pb-3 transparent">Arun Mistry</span>
+          <span class="text-h6 font-weight-medium mb-5">Welcome to my website</span>
+          <span width="100%" class="d-flex flex-grow-1 align-end justify-center">
+            <v-img src="../assets/me.png" contain />
+          </span>
         </v-card>
       </v-col>
       <v-col cols="12" md="5" lg="4" xl="3">
@@ -57,9 +57,6 @@
           </v-card>
         </v-card>
       </v-col>
-      <v-card tile outlined width="100%">
-        <v-sheet class="arrows" />
-      </v-card>
       <v-col cols="12" md="5" id="About">
         <v-card tile outlined height="100%" class="pa-5 px-md-10 d-flex align-center">
           <span class="text-md-h1 text-h3 font-weight-medium">
@@ -84,6 +81,7 @@
           </span>
         </v-card>
       </v-col>
+      <!-- Add skillset and achievements -->
       <v-col cols="12" id="Experience">
         <v-card tile outlined>
           <v-sheet class="text-md-h1 text-h3 font-weight-medium text-center py-8">Experience</v-sheet>
@@ -126,7 +124,11 @@
                   <v-divider />
                   <v-card-text style="max-height:50vh;overflow-y:scroll">
                     <v-timeline :dense="$vuetify.breakpoint.mdAndDown">
-                      <v-timeline-item v-for="event in item.events" :key="event.title">
+                      <v-timeline-item
+                        v-for="event in item.events"
+                        :key="event.title"
+                        :color="colors[Math.floor(Math.random() * 8)]"
+                      >
                         <span slot="opposite">{{event.date}}</span>
                         <v-card elevation="10">
                           <v-card-title
@@ -148,9 +150,6 @@
       </v-col>
     </v-row>
     <Projects />
-    <v-card tile outlined width="100%">
-      <v-sheet class="arrows" style="transform: rotate(180deg);" />
-    </v-card>
     <v-footer dark padless style="border-left: thin solid rgba(100,150,255,.85)" id="Contact">
       <v-card tile color="#1565C0" class="text-center" width="100%">
         <v-card-text>
@@ -184,6 +183,7 @@ export default {
   components: { Projects },
   data() {
     return {
+      pic: "Carbocycle",
       experience: [
         {
           title: "Events",
@@ -243,6 +243,7 @@ export default {
           ],
         },
       ],
+
       footer: [
         { icon: "linkedin", link: "https://www.linkedin.com/in/arun-mistry/" },
         { icon: "instagram", link: "https://www.instagram.com/arunmistry79/" },
@@ -250,18 +251,34 @@ export default {
         { icon: "facebook", link: "https://www.fb.me/arunmistry92" },
         { icon: "github", link: "https://github.com/ArunMistry" },
       ],
+      colors: [
+        "indigo",
+        "red darken-2",
+        "green darken-1",
+        "purple",
+        "yellow darken-3",
+        "pink darken-1",
+        "cyan",
+        "brown",
+      ],
     };
   },
 };
 </script>
 
 <style scoped>
-.arrows {
+/* .arrows {
   position: relative;
   margin: 0 20px;
   height: 10vh;
   background-image: url("../assets/arrowgroup.png");
   background-size: contain;
   background-repeat: repeat-x;
+} */
+.profile {
+  background-image: linear-gradient(#fff 0%, rgba(0, 0, 0, 0) 100%),
+    url("../assets/circuit.jpg");
+  background-repeat: repeat;
+  background-size: 350px;
 }
 </style>

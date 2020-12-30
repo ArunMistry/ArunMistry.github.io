@@ -56,7 +56,7 @@ export default {
     return {
       drawer: false,
       scrlpoint: 0,
-      x: 0,
+      x: 100,
       hidemenu: false,
       menu: [
         { icon: "star", name: "Highlights", id: "Highlights" },
