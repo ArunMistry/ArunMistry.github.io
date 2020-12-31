@@ -10,6 +10,7 @@
       @mousemove.native="hidemenu = false"
       @mouseleave.native=" hidemenu = (scrlpoint && $vuetify.breakpoint.mdAndUp)"
       style="background:linear-gradient(#fff calc(0% + 400px), #1565C0 calc(100% - 165px));"
+      :style="$vuetify.breakpoint.smAndDown?'height:initial!important':''"
     >
       <v-card flat v-if="$vuetify.breakpoint.mdAndUp">
         <v-card-text v-if="!hidemenu" class="text-h4 text-no-wrap black--text">Arun Mistry</v-card-text>
@@ -69,8 +70,8 @@ export default {
   },
   methods: {
     updateScroll() {
-      this.scrlpoint = window.scrollY > 75;
-      this.hidemenu = window.scrollY > 75 && this.x > 90 && this.$vuetify.breakpoint.mdAndUp;
+      this.scrlpoint = window.scrollY > 75  ? true:false;
+      this.hidemenu = window.scrollY > 75 && this.x > 90 && this.$vuetify.breakpoint.mdAndUp ? true:false;
     },
     updateX(e) {
       this.x = e.clientX;
